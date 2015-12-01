@@ -1,0 +1,42 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  min-width: 100%;
+}
+
+.container {
+  width: 90%;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+.delete {
+  color: #C00000;
+}
+
+.field_with_errors input,
+.field_with_errors textarea {
+  border-color: #C00000;
+}
+
+#error_explanation {
+  position: relative;
+  color: #900000;
+  padding: 10px;
+  width: 83.3333%;
+  display: block;
+  margin: 0 auto;
+}
+
+#error_explanation p {
+  background-color: #ffdecc;
+  padding: 5px;
+  border: 1px solid #e60000;
+}
