@@ -10,14 +10,18 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  Rails.application.routes.default_url_options[:host] = 'herokuapp.com'
-  #config.action_mailer.default_url_options = {:host => 'herokuapp.com'}
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-  #    :address => "127.0.0.1",
+  # Rails.application.routes.default_url_options[:host] = 'herokuapp.com'
+  # config.action_mailer.default_url_options = {:host => 'herokuapp.com'}
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #    :address => "smtp.ruby-hw.herokuapp.com",
   #    :port    => "25",
-  #    :domain  => 'yourdomain.com'
-  #}
+  #    :domain  => 'herokuapp.com'
+  # }
+
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => 'herokuapp.com' }
+  config.action_mailer.smtp_settings = {:address => "ruby-hw.herokuapp.com", :port => "25"}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
