@@ -1,27 +1,38 @@
+<%= render 'menu' %>
+
 <div class="container">
-  <p id="notice"><%= notice %></p>
+  <% if notice %>
+      <br />
+      <div data-alert class="alert-box info">
+        <%= notice %>
+        <a href="#" class="close">&times;</a>
+      </div>
+  <% end %>
+
 
   <h1>All Posts</h1>
 
-<%= link_to 'New Post', new_post_path, class: "button"%>
+  <% if user_signed_in? %>
+    <%= link_to 'New Post', new_post_path, class: "button"%>
+  <% end %>
+
   <% @posts.each do |post| %>
-      <table class="posts-table">
-    <thead>
-    <tr id="post-row-<%= post.id %>">
-      <td class="post-title"><%= post.title %></td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="bottom-border" >
-      <td class="post-body">
-        <p><%= post.created_at %></p>
+      <div class="posts">
+    <div class="title" id="post-<%= post.id %>">
+      <h2 class="post-title"><%= post.title %></h2>
+    </div>
+    <div class="content">
+        <p> Created on <%= post.created_at.strftime("%A, %d.%m.%Y") %>
+          | by <%= User.where(:id => post.user_id)[0].name %>
+          <% if can? :manage, post %>
+          | <%= link_to 'Edit', edit_post_path(post) %>
+          | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
+          <% end %>
+        </p>
+
         <%= post.body %>
-      </td>
-    </tr>
-    <tr><td><%= link_to 'Edit', edit_post_path(post) %></td></tr>
-    <tr><td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %></td></tr>
-    </tbody>
-  </table>
+    </div>
+  </div>
       <br/>
   <% end %>
 </div>

@@ -1,0 +1,22 @@
+<%= render 'menu' %>
+
+<br/>
+<div class="row">
+  <div class="medium-6 medium-centered large-4 large-centered columns">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="row column log-in-form">
+        <h4 class="text-center">Log in with you email account</h4>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, placeholder: "somebody@example.com" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        <p><%= f.submit "Log in", class: "button expanded" %></p>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
+</div>

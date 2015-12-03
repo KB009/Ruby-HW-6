@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  protect_from_forgery with: :exception
+  # before_action :authenticate_user!
+  #before_action :set_current_user
+
   def index
     @posts = Post.all.order(updated_at: :desc)
   end
@@ -13,6 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
@@ -54,7 +59,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :avatar)
   end
-
 end
