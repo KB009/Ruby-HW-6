@@ -19,17 +19,24 @@
   <% @posts.each do |post| %>
       <div class="posts">
     <div class="title" id="post-<%= post.id %>">
-      <h2 class="post-title"><%= post.title %></h2>
     </div>
     <div class="content">
-        <p> Created on <%= post.created_at.strftime("%A, %d.%m.%Y") %>
-          | by <%= User.where(:id => post.user_id)[0].name %>
+      <div class="event-date">
+        <p class="event-month"><%= post.created_at.strftime("%b %Y") %></p>
+        <p class="event-day"><%= post.created_at.strftime("%e") %></p>
+      </div>
+      <div class="event-desc">
+
+        <h4 class="event-desc-header"><%= post.title %></h4>
+        <p class="event-desc-detail">
+          by <%= User.where(:id => post.user_id)[0].name %>
           <% if can? :manage, post %>
-          | <%= link_to 'Edit', edit_post_path(post) %>
-          | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
+              | <%= link_to 'Edit', edit_post_path(post) %>
+              | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
           <% end %>
         </p>
-
+      </div>
+        <br/>
         <%= post.body %>
     </div>
   </div>

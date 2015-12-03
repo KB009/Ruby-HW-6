@@ -1,25 +1,25 @@
 <%= render 'menu' %>
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<br/>
+<div class="row edit">
+  <h4 class="text-center">Edit <%= resource_name.to_s.humanize %></h4>
+  <div class="medium-6 medium-centered large-8 large-centered columns">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
         <div class="form-group field">
           <div class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
-          <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
           <div class="col-sm-6">
             <%= f.file_field :avatar %>
           </div>
         </div>
 
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :name %>
       <%= f.text_field :name, autofocus: true %>
     </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -28,12 +28,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -52,3 +52,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+  </div>
+</div>
