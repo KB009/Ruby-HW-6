@@ -10,8 +10,7 @@ gem 'better_errors'
 
 gem 'devise'
 
-# gem "letter_opener" # , :group => :development
-gem 'letter_opener',  :git => "git://github.com/alexrothenberg/letter_opener.git", :branch => "on_a_server"
+gem "letter_opener", :group => :development
 
 gem 'cancancan'
 
