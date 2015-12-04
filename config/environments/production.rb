@@ -10,32 +10,23 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  # Rails.application.routes.default_url_options[:host] = 'herokuapp.com'
-  # config.action_mailer.default_url_options = {:host => 'herokuapp.com'}
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #    :address => "smtp.ruby-hw.herokuapp.com",
-  #    :port    => "25",
-  #    :domain  => 'herokuapp.com'
-  # }
-
+  # LetterOpener.cannot_write_to_file_system!
   # config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { :host => 'ruby-hw.herokuapp.com' }
-  config.action_mailer.smtp_settings = {:address => "ruby-hw.herokuapp.com", :port => "1025"}
-  # config.action_mailer.smtp_settings = {:address => "ruby-hw.herokuapp.com", :port => "25"}
-  # ActionMailer::Base.delivery_method = :smtp
-  # ActionMailer::Base.perform_deliveries = true
-  # ActionMailer::Base.raise_delivery_errors = true
-  # ActionMailer::Base.smtp_settings =
-  #    {
-  #
-  #        :address            => 'smtp.gmail.com',
-  #        :port               => 587,
-  #        :domain             => 'gmail.com', #you can also use google.com
-  #        :authentication     => :plain,
-  #        :user_name          => 'XXXXX@gmail.com',
-  #        :password           => 'XXXXXXX'
-  #    }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "ruby-hw.herokuapp.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
+  }
+
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
