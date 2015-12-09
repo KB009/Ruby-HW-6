@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rubocop', require: false
 
-gem 'exception_notification'
+gem 'exception_notification', :group => :production
 
 gem 'pry-rails', :group => :development
 

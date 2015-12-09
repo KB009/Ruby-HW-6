@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   protect_from_forgery with: :exception
-  # before_action :authenticate_user!
-  #before_action :set_current_user
 
   def index
     @posts = Post.all.order(updated_at: :desc)

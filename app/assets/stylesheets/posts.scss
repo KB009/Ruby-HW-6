@@ -22,7 +22,12 @@ body {
 }
 
 .delete {
-  color: #C00000;
+  color: #e30000;
+}
+
+.delete:hover,
+.delete:focus{
+  color: #9e0000;
 }
 
 .field_with_errors input,
