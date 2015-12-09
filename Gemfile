@@ -4,13 +4,13 @@ gem 'rubocop', require: false
 
 gem 'exception_notification'
 
-gem 'pry'
+gem 'pry-rails', :group => :development
 
-gem 'better_errors'
+gem 'better_errors', :group => :development
 
 gem 'devise'
 
-gem "letter_opener" , :group => :development
+gem "letter_opener", :group => :development
 
 gem 'cancancan'
 
