@@ -12,7 +12,7 @@ puts 'SETTING UP ROLES'
 
 unless User.where(:email => 'test@test.com').any? then
   puts 'SETTING UP DEFAULT USER LOGIN'
-    user = User.create! :name => "Administrator", :email => 'test@test.com', :password => 'password', :password_confirmation => 'password'
+    user = User.create! :name => "Administrator", :email => 'ruby-hw@email.cz', :password => 'password', :password_confirmation => 'password'
     user.add_role :admin
     puts 'New user created: ' << user.name
 end

@@ -10,29 +10,29 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  # LetterOpener.cannot_write_to_file_system!
-  # config.action_mailer.delivery_method = :letter_opener
+  # exception notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+        :email_prefix => "[PREFIX] ",
+        :sender_address => %{"notifier" <ruby-hw@email.cz>},
+        :exception_recipients => %w{ruby-hw@email.cz}
+    }
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.smtp_settings = {:address => "localhost", :port => "1025"}
 
-  #config.action_mailer.default_url_options = { :host => 'ruby-hw.herokuapp.com' }
-
-  # config.action_mailer.default_url_options = { :host => 'smtp.mandrillapp.com' }
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'ruby-hw.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default :charset => "utf-8"
-  # config.action_mailer.smtp_settings = {
-  #    address: "smtp.mandrillapp.com",
-  #    port: 587,
-  #    # domain: "ruby-hw.herokuapp.com",
-  #    authentication: "plain",
-  #    enable_starttls_auto: true,
-  #    user_name: ENV["GMAIL_USERNAME"],
-  #    password: ENV["GMAIL_PASSWORD"]
-  #}
-
+  config.action_mailer.smtp_settings = {
+      address: "smtp.seznam.cz",
+      port: 25,
+      domain: "seznam.cz",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
+  }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false

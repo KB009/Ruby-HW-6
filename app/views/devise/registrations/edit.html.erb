@@ -1,10 +1,11 @@
 <%= render 'menu' %>
 <br/>
-<div class="row edit">
+<div class="row edit ep">
+  <%= link_to "Back", :back, class: "button secondary"%>
   <h4 class="text-center">Edit <%= resource_name.to_s.humanize %></h4>
   <div class="medium-6 medium-centered large-8 large-centered columns">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
         <div class="form-group field">
           <div class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
@@ -43,14 +44,13 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "button"%>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class: "button alert", method: :delete %></p>
 
-<%= link_to "Back", :back %>
   </div>
 </div>
