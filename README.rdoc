@@ -1,7 +1,5 @@
 == Ruby HW #6
 
-Running on: http://ruby-hw.herokuapp.com/
-
 * when running localy, command <tt>$ rake db:seed</tt> required
 
 * To sign up, use real e-mail address (due to confirmation e-mail)
